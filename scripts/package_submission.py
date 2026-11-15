@@ -18,6 +18,10 @@ EXCLUDED_DIRS = {
 EXCLUDED_FILES = {
     ".DS_Store",
     "ENAM_Founding AI Engineer Build Challenge_Main.pdf",
+    "FINN_LLD_REVIEW.md",
+    "SUBMISSION_COVERING_NOTE.md",
+    "SUBMISSION_EMAIL_DRAFT.md",
+    "plan.md",
     "next-env.d.ts",
 }
 EXCLUDED_SUFFIXES = {".db", ".sqlite", ".sqlite3", ".pyc", ".pyo", ".zip"}
