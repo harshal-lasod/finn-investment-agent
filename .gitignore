@@ -10,3 +10,11 @@ frontend/.next/
 frontend/next-env.d.ts
 *.zip
 ENAM_Founding AI Engineer Build Challenge_Main.pdf
+
+# Local submission and planning documents
+/AI_BUILD_HISTORY.md
+/BUILD_LOG.md
+/FINN_LLD_REVIEW.md
+/SUBMISSION_COVERING_NOTE.md
+/SUBMISSION_EMAIL_DRAFT.md
+/plan.md
