@@ -23,6 +23,17 @@ Open [http://localhost:3000](http://localhost:3000). The API is at [http://local
 
 To opt into Yahoo Finance market history, copy `.env.example` to `.env`, set `ENABLE_LIVE_DATA=true`, then restart the backend. The portfolio and alert endpoints fetch latest daily bars; company research also attempts Yahoo annual income statement, balance sheet, and cash-flow line items when available. INR statement values use Yahoo's financial-currency metadata and display as readable ₹ crore/lakh-crore amounts; other currencies use compact formatting, and an unknown currency is explicitly labeled. Daily SMA-20/50/200, RSI-14, MACD, Bollinger bands, and ATR-14 are calculated locally from OHLCV history. Requests are cached for `YFINANCE_CACHE_TTL_SECONDS`; missing or blocked data falls back to visibly labeled demo seed data. Yahoo Finance through yfinance is unofficial and may be delayed or incomplete; it is not an authoritative exchange or audited-statement source.
 
+## Free demo deployment
+
+The repository includes a Render Blueprint for the FastAPI backend. To deploy:
+
+1. Import the GitHub repository into Vercel and set the project root to `frontend`.
+2. After Vercel creates the site, create a Render Blueprint from the repository root. When prompted, set `CORS_ORIGINS` to a JSON list containing the Vercel origin, for example `["https://your-app.vercel.app"]`.
+3. In Vercel, set `NEXT_PUBLIC_API_BASE_URL` to the Render service origin (no trailing slash), then redeploy the frontend.
+4. Confirm the backend is healthy at `<render-origin>/health`.
+
+The demo keeps live Yahoo fetching disabled by default. Render's free service sleeps when idle and has ephemeral storage, so SQLite cache data is reset after restarts; the demo seed is loaded on startup.
+
 API responses and live Yahoo snapshots are persisted in the local SQLite database (`backend/storage/finn.db`) and served until their TTL expires. Defaults are configurable in `.env`: Yahoo quote/history 1 hour; Yahoo annual statements 30 days; portfolio, alerts, and research responses 5 minutes; digests 15 minutes; narrative audits and network results 24 hours; Copilot responses 5 minutes. Expired entries are removed on access and refreshed from their source. The symbol catalog is a local data file refreshed separately with `python scripts/update_symbols.py`.
 
 The Research module-status cards link directly to the relevant Yahoo statement pages when applicable and to NSE's corporate-filings search for primary-source verification. Yahoo statement data is still secondary-source data and is labeled accordingly.
