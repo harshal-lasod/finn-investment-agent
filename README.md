@@ -47,7 +47,7 @@ cd frontend && npm run lint && npm run build
 
 ## Submission package
 
-Run `python3 scripts/package_submission.py` from the project root to create `FINN_submission_2026-11-15.zip`. The archive contains source, tests, documentation, local symbol data, and build-history notes; it deliberately excludes `.env`, databases, dependency directories, generated builds, and the challenge PDF. Review the included `SUBMISSION_EMAIL_DRAFT.md` and replace its demo/repository placeholders before sending.
+Run `python3 scripts/package_submission.py` from the project root to create `FINN_submission_2026-11-15.zip`. The packager bundles files present in the local working tree and excludes `.env`, databases, dependency directories, generated builds, and the challenge PDF. Review the generated archive before sharing.
 
 ## Data and safety notes
 
